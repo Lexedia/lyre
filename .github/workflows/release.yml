@@ -7,6 +7,8 @@ on:
 
 jobs:
   build_and_release:
+    permissions:
+      contents: write
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -44,4 +46,4 @@ jobs:
         with:
           files: ${{ matrix.target_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
