@@ -9,13 +9,13 @@ Go to the [releases page](https://github.com/Lexedia/lyre/releases) and download
 ## Usage
 
 ```bash
-lyre -a <artist> -s <song>
+lyre download -a <artist> -s <song>
 ```
 
 ## Example
 
 ```bash
-lyre -a "The Beatles" -s "Hey Jude"
+lyre download -a "The Beatles" -s "Hey Jude"
 ```
 
 A directory called `lyrics` will be created in the current working directory, and the lyrics will be saved to `lyrics/The Beatles/Hey Jude.lrc`.
@@ -24,5 +24,5 @@ A directory called `lyrics` will be created in the current working directory, an
 To romanize the lyrics, you can use the `-m/--mode` option:
 
 ```bash
-lyre -a Ado -s Value -m romanize
+lyre download -a Ado -s Value -m romanize
 ```
