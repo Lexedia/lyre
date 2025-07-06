@@ -118,8 +118,10 @@ class Musixmatch {
     for (final lrc in lyrics) {
       final text = switch (mode) {
         Mode.normal => lrc.text,
-        Mode.romanizeOnly => await kuroshiro.convert(lrc.text, mode: ConvertMode.spaced, to: ConvertTo.romaji),
-        Mode.romanize => '${lrc.text} (${await kuroshiro.convert(lrc.text, mode: ConvertMode.spaced, to: ConvertTo.romaji)})',
+        Mode.romanizeOnly =>
+          await kuroshiro.convert(lrc.text, mode: ConvertMode.spaced, to: ConvertTo.romaji).then((s) => s.split(RegExp(r'\s{2,3}')).join(' ')),
+        Mode.romanize =>
+          '${lrc.text} (${await kuroshiro.convert(lrc.text, mode: ConvertMode.spaced, to: ConvertTo.romaji).then((s) => s.split(RegExp(r'\s{2,3}')).join(' '))})',
       };
       sb.writeln('[${lrc.duration.fmt()}]$text');
     }
